@@ -7,8 +7,14 @@ var http = require('http').Server(app); //serve the express
 
 var io = require('socket.io')(http); //io is input and output
 
+/*
 http.listen(8080, function() {
     console.log('app listening on port 8080.');
+});
+*/
+
+http.listen(process.env.PORT, function() {
+    console.log('app listening on port 3000.');
 });
 
 var mongoose = require('mongoose');
