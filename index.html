@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Google Map API</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h2>Please enter a city name:</h2>
+	<textarea id="enter" type="text" placeholder="eg.Atlanta"></textarea><br>
+    <button id="button">Submit</button>
+    <p id="thiscity">This city is in:</p><br>
+    <h2 id="country"></h2>
+    <script> 
+            var button = document.getElementById('button');
+            button.addEventListener("click", submit, false);
+            var country = document.getElementById('country');
+            var socket = io('http://localhost:8080');
+            socket.on('country', function (data) {
+                country.innerHTML = data.country;
+            });
+            function submit(){
+                var city = document.getElementById('enter').value;
+                socket.emit('mycity', { city: city });
+            }
+    </script>
+</body>
+</html>
