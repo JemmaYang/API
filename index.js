@@ -14,7 +14,7 @@ http.listen(8080, function() {
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 //mongoose.connect('mongodb://localhost/mydata');
-mongoose.connect("mongodb://lyricliu:lyc123456@ds153719.mlab.com:53719/citytocountry");
+mongoose.connect("mongodb://lyricliu:lyc123456@ds153719.mlab.com:53719/heroku_lkd8k70c");
 
 
 var TodoSchema = new mongoose.Schema({
